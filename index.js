@@ -14,7 +14,7 @@ const connect = () => {
     "mongodb+srv://Sourav:Sourav1999@cluster0.jbmyk.mongodb.net/chatapp"
   );
 };
-
+const PORT = process.env.PORT || 5001;
 app.post("/api/users", async function (req, res) {
   let data = await users.create(req.body);
   res.send(data);
@@ -103,7 +103,7 @@ io.on("connection", (socket) => {
 
 const start = async () => {
   await connect();
-  server.listen(3001, () => {
+  server.listen(PORT, () => {
     console.log("SERVER RUNNING");
   });
 };
